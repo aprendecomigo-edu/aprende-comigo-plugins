@@ -1,10 +1,13 @@
 # Feature Development Plugin
 
-A comprehensive, structured workflow for feature development with specialized agents for codebase exploration, architecture design, and quality review. Optimized for Next.js + Supabase projects with awareness of authorization, multi-tenancy, internationalization, and validation patterns.
+Feature development and bug-fixing workflows with specialized agents for codebase exploration, architecture design, and quality review. Optimized for Next.js + Supabase projects with awareness of authorization, multi-tenancy, internationalization, and validation patterns.
 
 ## Overview
 
-The Feature Development Plugin provides a systematic 7-phase approach to building new features. Instead of jumping straight into code, it guides you through understanding the codebase, asking clarifying questions, designing architecture, and ensuring quality—resulting in better-designed features that integrate seamlessly with your existing code.
+The Feature Development Plugin provides two workflows:
+
+- **`/feature-dev`** — A guided 7-phase approach to building new features, with user checkpoints for clarification, architecture decisions, and review
+- **`/feature-dev:bug-fix`** — An autonomous 6-phase workflow for diagnosing and fixing bugs, running end-to-end without user intervention
 
 ## Philosophy
 
@@ -14,7 +17,7 @@ Building features requires more than just writing code. You need to:
 - **Design thoughtfully** before implementing
 - **Review for quality** after building
 
-This plugin embeds these practices into a structured workflow that runs automatically when you use the `/feature-dev` command.
+This plugin embeds these practices into structured workflows that run automatically when you use the `/feature-dev` or `/feature-dev:bug-fix` commands.
 
 ## Command: `/feature-dev`
 
@@ -157,11 +160,54 @@ Guides creation of App Router pages with DaisyUI components, next-intl integrati
 
 **Covers**: App Router page structure, DaisyUI v5, next-intl, Zod form validation, useNotification, responsive design, loading/error states
 
+## Command: `/feature-dev:bug-fix`
+
+Launches an autonomous bug diagnosis and fix workflow with 6 phases. Accepts flexible input: free text, GitHub issue numbers, or issue URLs.
+
+**Usage:**
+```bash
+/feature-dev:bug-fix Login page shows blank screen after auth
+/feature-dev:bug-fix #42
+/feature-dev:bug-fix https://github.com/aprendecomigo-edu/aprendecomigo/issues/42
+```
+
+### The 6-Phase Workflow
+
+#### Phase 1: Bug Understanding
+Parses input (detects issue numbers, URLs, or free text), fetches issue details via `gh issue view` if applicable, and produces a structured bug summary.
+
+#### Phase 2: Bug Localization
+Launches 2-3 `code-explorer` agents targeting different diagnostic angles. Analyzes git history (`git log`, `git blame`) on suspect files. Produces a localization report.
+
+#### Phase 3: Root Cause Analysis
+Forms and verifies a hypothesis. Checks common Aprende Comigo bug patterns (missing `school_id` filter, missing auth guard, Zod schema mismatch, i18n key issues, Drizzle misconfiguration, App Router caching, error handling gaps).
+
+#### Phase 4: Fix Design
+Designs the minimal fix, lists files to modify, assesses side effects, and proceeds directly to implementation.
+
+#### Phase 5: Implementation
+Applies the fix following codebase conventions. Runs pre-implementation checklist (auth guards, Zod validation, translation keys, school-scoped queries, error handling). Executes related tests.
+
+#### Phase 6: Verification & Summary
+Launches 2 `code-reviewer` agents (correctness + security/conventions). Auto-fixes critical issues. Re-runs tests. Presents final summary with risk assessment.
+
+**Key differences from `/feature-dev`:**
+- Fully autonomous — no user checkpoints
+- No architecture phase — bug fixes should be minimal, not architectural
+- GitHub integration for input parsing
+- Git analysis for diagnosis
+- Self-correcting — auto-fixes critical review findings
+
 ## Usage Patterns
 
 ### Full workflow (recommended for new features):
 ```bash
 /feature-dev Add teacher schedule management with availability and booking
+```
+
+### Bug fix (recommended for bug reports and issues):
+```bash
+/feature-dev:bug-fix Students from school A can see school B data on the dashboard
 ```
 
 ### Manual agent invocation:
@@ -184,24 +230,29 @@ Guides creation of App Router pages with DaisyUI components, next-intl integrati
 ## Best Practices
 
 1. **Use the full workflow for complex features**: The 7 phases ensure thorough planning
-2. **Answer clarifying questions thoughtfully**: Phase 3 prevents future confusion
-3. **Choose architecture deliberately**: Phase 4 gives you options for a reason
-4. **Don't skip code review**: Phase 6 catches issues before they reach production
-5. **Read the suggested files**: Phase 2 identifies key files—read them to understand context
+2. **Use bug-fix for bugs**: The 6 autonomous phases handle diagnosis through verification
+3. **Answer clarifying questions thoughtfully**: Phase 3 of `/feature-dev` prevents future confusion
+4. **Choose architecture deliberately**: Phase 4 gives you options for a reason
+5. **Don't skip code review**: Both workflows include review phases
+6. **Read the suggested files**: Phase 2 identifies key files—read them to understand context
 
 ## When to Use This Plugin
 
-**Use for:**
+**Use `/feature-dev` for:**
 - New features that touch multiple files
 - Features requiring architectural decisions
 - Complex integrations with existing code
 - Features where requirements are somewhat unclear
 
-**Don't use for:**
-- Single-line bug fixes
-- Trivial changes
-- Well-defined, simple tasks
-- Urgent hotfixes
+**Use `/feature-dev:bug-fix` for:**
+- Bug reports from users or QA
+- GitHub issues that need investigation
+- Unexpected behavior that needs diagnosis
+- Regressions after recent changes
+
+**Don't use either for:**
+- Single-line typo fixes
+- Trivial config changes
 
 ## Requirements
 
