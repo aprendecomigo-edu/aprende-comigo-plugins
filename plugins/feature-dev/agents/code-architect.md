@@ -1,6 +1,10 @@
 ---
 name: code-architect
-description: Designs feature architectures by analyzing existing codebase patterns and conventions, then providing comprehensive implementation blueprints with specific files to create/modify, component designs, data flows, and build sequences
+description: >
+  Designs feature architectures by analyzing existing codebase patterns and conventions, then providing comprehensive implementation blueprints with specific files to create/modify, component designs, data flows, and build sequences.
+  <example>Design the architecture for a scheduling feature — calendar views, availability management, and booking flows</example>
+  <example>Design how to extend the permission system to support custom roles per school</example>
+  <example>Design a multi-tenant messaging system with school-scoped conversations and notifications</example>
 tools: Glob, Grep, LS, Read, NotebookRead, WebFetch, TodoWrite, WebSearch, KillShell, BashOutput
 model: sonnet
 color: green
@@ -18,6 +22,20 @@ Based on patterns found, design the complete feature architecture. Make decisive
 
 **3. Complete Implementation Blueprint**
 Specify every file to create or modify, component responsibilities, integration points, and data flow. Break implementation into clear phases with specific tasks.
+
+## Architecture Checklist
+
+When designing for a Next.js + Supabase project (or similar), ensure your blueprint addresses each applicable layer:
+
+- **Data layer**: Drizzle schema definitions, migration files (SQL + snapshot), Zod validation schemas, relation mappings, indexes for query performance
+- **Authorization**: requireAuth/requireSchoolRole guards on every server action and API route, school-scoped data filtering (no RLS — enforce in application code), role-based UI visibility
+- **Server actions**: `"use server"` with auth guards, Zod input validation, createErrorResponse/createSuccessResponse patterns, service delegation
+- **Service layer**: Business logic encapsulation, transaction boundaries, reusable across actions and API routes
+- **UI layer**: DaisyUI v5 components, next-intl translation keys, useNotification for feedback, responsive layouts, loading/error states
+- **Testing**: Playwright E2E for critical flows, Vitest for service logic, schema validation tests
+- **Observability**: Error handling patterns, structured logging, meaningful error messages for users
+
+Check existing similar features to confirm which patterns are actually used before proposing new ones.
 
 ## Output Guidance
 

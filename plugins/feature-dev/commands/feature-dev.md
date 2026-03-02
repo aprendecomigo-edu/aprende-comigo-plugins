@@ -49,6 +49,11 @@ Initial request: $ARGUMENTS
    - "Analyze the current implementation of [existing feature/area], tracing through the code comprehensively"
    - "Identify UI patterns, testing approaches, or extension points relevant to [feature]"
 
+   **Project-specific exploration prompts** (use when working on a Next.js + Supabase project):
+   - "Trace the authorization patterns — how are routes and server actions protected? Look for requireAuth, requireSchoolRole, permission checks"
+   - "Map the data models related to [feature] — Drizzle schemas, relations, migration patterns, Zod validation schemas"
+   - "Analyze how similar CRUD features handle the full stack: page → server action → service → schema → i18n → error handling"
+
 2. Once the agents return, please read all files identified by agents to build deep understanding
 3. Present comprehensive summary of findings and patterns discovered
 
@@ -66,6 +71,16 @@ Initial request: $ARGUMENTS
 3. **Present all questions to the user in a clear, organized list**
 4. **Wait for answers before proceeding to architecture design**
 
+**Structured checklist** — consider each area and ask about any that are unclear:
+
+- **Permissions**: Who can access this feature? Which roles (admin, teacher, staff)? Are there school-scoped restrictions?
+- **Multi-tenancy**: Does this data belong to a specific school? How is cross-tenant isolation enforced?
+- **User account types**: Does this involve students? Are there different account types (minor vs adult, self-managed vs parent-managed)?
+- **Internationalization**: What user-facing text is needed? Are there locale-specific behaviors (date formats, currency)?
+- **Validation**: What are the input constraints? Which fields are required vs optional? What are valid ranges/formats?
+- **Error cases**: What happens on failure? What feedback does the user see? Are there retry scenarios?
+- **Testing**: What are the critical paths to test? Are there E2E flows that need Playwright coverage?
+
 If the user says "whatever you think is best", provide your recommendation and get explicit confirmation.
 
 ---
@@ -76,6 +91,9 @@ If the user says "whatever you think is best", provide your recommendation and g
 
 **Actions**:
 1. Launch 2-3 code-architect agents in parallel with different focuses: minimal changes (smallest change, maximum reuse), clean architecture (maintainability, elegant abstractions), or pragmatic balance (speed + quality)
+
+   **Important**: Before designing, each architect should check established patterns in the codebase for auth guards, i18n integration, Zod validation, and error handling. The architecture should incorporate these cross-cutting concerns from the start, not as an afterthought.
+
 2. Review all approaches and form your opinion on which fits best for this specific task (consider: small fix vs large feature, urgency, complexity, team context)
 3. Present to user: brief summary of each approach, trade-offs comparison, **your recommendation with reasoning**, concrete implementation differences
 4. **Ask user which approach they prefer**
@@ -87,6 +105,15 @@ If the user says "whatever you think is best", provide your recommendation and g
 **Goal**: Build the feature
 
 **DO NOT START WITHOUT USER APPROVAL**
+
+**Pre-implementation checklist** — verify each item is addressed in the chosen architecture before writing code:
+
+- [ ] Auth guards on every server action and API route (requireAuth / requireSchoolRole)
+- [ ] Zod validation schemas for all user inputs
+- [ ] Translation keys for all user-facing strings (no hardcoded English)
+- [ ] Error handling using established patterns (createErrorResponse / createSuccessResponse)
+- [ ] School-scoped queries (school_id filtering) for multi-tenant data
+- [ ] Loading and error states for UI components
 
 **Actions**:
 1. Wait for explicit user approval
@@ -103,7 +130,10 @@ If the user says "whatever you think is best", provide your recommendation and g
 **Goal**: Ensure code is simple, DRY, elegant, easy to read, and functionally correct
 
 **Actions**:
-1. Launch 3 code-reviewer agents in parallel with different focuses: simplicity/DRY/elegance, bugs/functional correctness, project conventions/abstractions
+1. Launch 3 code-reviewer agents in parallel with these specific focuses:
+   - **Simplicity & DRY**: Code quality, duplication, unnecessary complexity, readability
+   - **Security & Authorization**: Auth guards present on all actions/routes, multi-tenant isolation, input validation, no data leaks across schools
+   - **Project Conventions**: i18n usage (no hardcoded strings), Zod validation on inputs, error handling patterns (createErrorResponse/createSuccessResponse), DaisyUI component usage, Drizzle ORM patterns
 2. Consolidate findings and identify highest severity issues that you recommend fixing
 3. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
 4. Address issues based on user decision
