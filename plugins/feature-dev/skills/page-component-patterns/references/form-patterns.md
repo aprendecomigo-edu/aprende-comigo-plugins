@@ -55,15 +55,7 @@ if (result.success) {
 
 ## DaisyUI Form Classes
 
-Use DaisyUI v5 form component classes. Read the DaisyUI docs for current class names:
-
-- **Form control wrapper**: `form-control`
-- **Label**: `label`
-- **Text input**: `input input-bordered`
-- **Select**: `select select-bordered`
-- **Textarea**: `textarea textarea-bordered`
-- **Error text**: `label-text-alt text-error`
-- **Buttons**: `btn btn-primary`, `btn btn-ghost`
+Read the DaisyUI v5 docs (via context7) for current form component classes — including form controls, labels, inputs, selects, textareas, error text, and buttons. Read existing forms in `app/` and `components/` for project conventions.
 
 ### Confirmation dialogs
 

@@ -14,36 +14,22 @@ This lets client components handle any action result uniformly without knowing t
 
 ### Response helpers
 
-Read `lib/utils/errors.ts` for the actual function signatures. Key helpers:
+Read `lib/utils/errors.ts` for the current helper functions. The module provides:
 
-- **`createSuccessResponse(message, data?)`** — wraps a success message with optional data fields
-- **`createSuccessWithWarningsResponse(message, warnings, data?)`** — success with warnings array
-- **`createErrorResponse(error, defaultMessage)`** — takes the actual error object (for logging/Sentry) plus a user-friendly fallback message
-- **`formatZodErrors(zodError)`** — converts Zod validation issues into a readable string
-- **`formatError(error, defaultMessage)`** — extracts a message from any error type
+- **Success responses** — wrap a message with optional data fields
+- **Success with warnings** — success response that also carries a warnings array
+- **Error responses** — take the actual error (for logging/Sentry) plus a user-friendly fallback message
+- **Zod error formatting** — converts validation issues into a readable string
+- **Generic error formatting** — extracts a message from any error type
 
 ### Validation errors
 
-Handle Zod validation failures gracefully:
+Handle Zod validation failures gracefully. Two approaches:
 
-```typescript
-// Pattern: catch ZodError separately from other errors
-try {
-  const parsed = schema.parse(input);
-  // ... rest of action
-} catch (error) {
-  if (error instanceof z.ZodError) {
-    return { success: false, error: formatZodErrors(error) };
-  }
-  return createErrorResponse(error, "Operation failed");
-}
+1. **Throwing** — use `.parse()` and catch `ZodError` separately from other errors, formatting it with the Zod error helper
+2. **Non-throwing** — use `.safeParse()`, check `result.success`, and format errors from `result.error`
 
-// Alternative: use safeParse for non-throwing validation
-const result = schema.safeParse(input);
-if (!result.success) {
-  return { success: false, error: formatZodErrors(result.error) };
-}
-```
+Read `lib/utils/errors.ts` for the Zod error formatting function. Read existing server actions in `app/actions/` to see which approach the project prefers.
 
 ### Never expose internals
 

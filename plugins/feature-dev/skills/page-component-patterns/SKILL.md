@@ -33,16 +33,9 @@ Read existing pages in `app/` to confirm the actual route group structure and na
 
 ## DaisyUI v5 Components
 
-Use DaisyUI v5 component classes for consistent UI:
+Use DaisyUI v5 component classes for consistent UI. Read the DaisyUI v5 docs (via context7) for current class names — they cover layout, data display, forms, actions, feedback, and navigation components.
 
-- **Layout**: `card`, `drawer`, `navbar`, `footer`
-- **Data display**: `table`, `stat`, `badge`, `avatar`
-- **Forms**: `input`, `select`, `textarea`, `checkbox`, `toggle`
-- **Actions**: `btn`, `btn-primary`, `btn-ghost`, `btn-error`
-- **Feedback**: `alert`, `toast`, `loading`, `skeleton`
-- **Navigation**: `tabs`, `breadcrumbs`, `pagination`
-
-Combine with Tailwind utility classes. Do not write custom CSS — compose with existing classes. Read `app/globals.css` for custom utility classes like `glass-container`, `bg-gradient-primary`.
+Combine with Tailwind utility classes. Do not write custom CSS — compose with existing classes. Read `app/globals.css` for custom utility classes defined in this project. Read existing components in `components/` and pages in `app/` for project conventions.
 
 ## Internationalization with next-intl
 
@@ -88,19 +81,12 @@ Forms combine server actions with client-side validation:
 
 ## Notification Pattern
 
-Read `lib/contexts/NotificationContext.tsx` for the actual hook API. The pattern:
+Read `lib/contexts/NotificationContext.tsx` for the actual hook API and available methods. The pattern:
 
-```typescript
-// -> Read lib/contexts/NotificationContext.tsx for the actual import and method names
-const { showSuccess, showError, showWarning, showInfo } = useNotification();
-
-// After a server action completes:
-if (result.success) {
-  showSuccess(t("messages.createSuccess"));
-} else {
-  showError(result.error);
-}
-```
+1. Import the notification hook from the context
+2. After a server action completes, check `result.success`
+3. Show success or error feedback using the hook's methods
+4. Use translation keys for success messages; use `result.error` for error messages
 
 ## Responsive Design
 
@@ -113,9 +99,9 @@ if (result.success) {
 
 Every page should handle loading and error states:
 
-- `loading.tsx` — skeleton UI matching the page layout (use DaisyUI `skeleton` class)
+- `loading.tsx` — skeleton UI matching the page layout. Read an existing `loading.tsx` in `app/` for the current skeleton pattern and DaisyUI classes used.
 - `error.tsx` — user-friendly error message with retry option
-- Use `loading loading-spinner` for inline loading indicators
+- Read DaisyUI v5 docs for current loading indicator and skeleton classes
 
 ## References
 

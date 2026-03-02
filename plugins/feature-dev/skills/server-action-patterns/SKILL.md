@@ -22,12 +22,12 @@ Every server action follows this consistent 6-step pattern:
 
 ## Authorization Guards
 
-Two guards exist, used in sequence:
+Two guards exist, used in sequence. Read `lib/permissions/withAuth.ts` for their exact signatures:
 
-- **`requireAuth()`** — returns a `[UserPermissionContext, null]` tuple on success, or `[null, error]` on failure. The context contains `profileId`, school memberships, and role-check methods.
-- **`requireSchoolRole(ctx, schoolId, level)`** — checks the user's role at a specific school. Role levels are hierarchical: `"admin"` (strictest) > `"staff"` > `"teacher"` > `"member"` (most permissive). Returns `null` if authorized, or an error object if not.
+1. **Authentication guard** — verifies the user is logged in and returns a permission context (tuple return pattern: context-or-error). The context carries the user's `profileId`, school memberships, and role-check methods.
+2. **School role guard** — checks whether the user has a required role at a specific school. Role levels are hierarchical: `"admin"` (strictest) > `"staff"` > `"teacher"` > `"member"` (most permissive).
 
-Read `lib/permissions/withAuth.ts` for the exact signatures. Read `lib/permissions/context.ts` for `UserPermissionContext` methods (e.g., `isAdminInSchool()`, `isGuardianOf()`).
+Read `lib/permissions/context.ts` for available methods on the permission context — includes role checks, relationship checks, and school membership queries.
 
 ## Input Validation with Zod
 
@@ -40,9 +40,9 @@ Read `lib/permissions/withAuth.ts` for the exact signatures. Read `lib/permissio
 
 Read `lib/utils/errors.ts` for current helper signatures. Key patterns:
 
-- **Success**: `createSuccessResponse(message, optionalData)` — message string + optional data object
-- **Error**: `createErrorResponse(error, defaultMessage)` — error object + user-friendly fallback message
-- **Zod errors**: `formatZodErrors(zodError)` — converts Zod issues to a user-friendly string
+- **Success responses** — wrap a message string with optional data fields
+- **Error responses** — take the actual error object (for logging/Sentry) plus a user-friendly fallback message
+- **Zod error formatting** — converts Zod validation issues into a readable string
 - Never expose internal error details (stack traces, SQL errors) to the client
 
 ## Service Delegation

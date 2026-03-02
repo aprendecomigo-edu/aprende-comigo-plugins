@@ -33,13 +33,9 @@ When you check for `"teacher"`, it allows teachers AND anyone higher (staff, adm
 
 ### Permission context capabilities
 
-The `UserPermissionContext` (from `lib/permissions/context.ts`) provides methods beyond basic role checks:
-- `isAdminInSchool(schoolId)`, `isStaffOrHigherInSchool(schoolId)`, etc.
-- `isOwnProfile(targetProfileId)` — for self-service actions
-- `isGuardianOf(studentId)` — async, for guardian-specific permissions
-- `canManageFinancesFor(studentId)` — async, granular guardian permissions
+The permission context (from `lib/permissions/context.ts`) provides methods beyond basic role checks — including school-level role queries, self-service checks, guardian relationship checks, and granular permission queries.
 
-Read the actual file for the full API — these methods evolve as the permission system grows.
+Read `lib/permissions/context.ts` for the full API — the available methods evolve as the permission system grows.
 
 ### School-scoped data filtering
 

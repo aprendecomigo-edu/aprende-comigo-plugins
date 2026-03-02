@@ -9,30 +9,13 @@
 
 ### Translation key organization
 
-Keys are organized by feature namespace with dot notation:
+Keys are organized by feature namespace with dot notation. Read `messages/en.json` for the actual structure, nesting conventions, and naming patterns used in this project.
 
-```json
-{
-  "featureName": {
-    "title": "Feature Title",
-    "form": {
-      "fieldName": "Field Label",
-      "submit": "Save",
-      "cancel": "Cancel"
-    },
-    "table": {
-      "columnName": "Column Header"
-    },
-    "messages": {
-      "createSuccess": "Record created successfully",
-      "deleteConfirm": "Are you sure you want to delete this?"
-    },
-    "empty": "No records found"
-  }
-}
-```
-
-Read `messages/en.json` to see the actual structure and naming conventions used in this project.
+General principles:
+- Group keys by feature namespace at the top level
+- Nest by UI context within each feature (e.g., form fields, table columns, feedback messages)
+- Use descriptive action names for messages (e.g., create success, delete confirmation)
+- Read existing namespaces in `messages/en.json` before creating new ones — follow the established conventions
 
 ### Key naming rules
 
@@ -80,7 +63,7 @@ format.number(amount, { style: "currency", currency: "EUR" });
 - `en` — English (UK)
 - `pt` — Portuguese (PT)
 
-Default locale is configured in the project's i18n settings. Read the next-intl configuration file for details.
+Default locale is configured in the project's i18n settings. Locale is stored in a cookie, not URL segments. Read the i18n configuration file for details.
 
 ## Why this matters
 

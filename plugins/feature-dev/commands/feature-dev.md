@@ -17,6 +17,12 @@ You are helping a developer implement a new feature. Follow a systematic approac
 
 ---
 
+## Before Starting
+
+Read `CLAUDE.md` (or equivalent project instructions) to understand the project's conventions, architecture, and established patterns. This is the source of truth for how features should be built.
+
+---
+
 ## Phase 1: Discovery
 
 **Goal**: Understand what needs to be built
@@ -106,12 +112,12 @@ If the user says "whatever you think is best", provide your recommendation and g
 
 **DO NOT START WITHOUT USER APPROVAL**
 
-**Pre-implementation checklist** — verify each item is addressed in the chosen architecture before writing code:
+**Pre-implementation checklist** — verify each item is addressed in the chosen architecture before writing code. Read the actual source files to confirm current API conventions:
 
-- [ ] Auth guards on every server action and API route (requireAuth / requireSchoolRole)
-- [ ] Zod validation schemas for all user inputs
-- [ ] Translation keys for all user-facing strings (no hardcoded English)
-- [ ] Error handling using established patterns (createErrorResponse / createSuccessResponse)
+- [ ] Auth guards on every server action and API route — read `lib/permissions/withAuth.ts` for current guard functions
+- [ ] Zod validation schemas for all user inputs — read `lib/schemas/` for conventions
+- [ ] Translation keys for all user-facing strings (no hardcoded English) — read `messages/en.json` for structure
+- [ ] Error handling using established response helpers — read `lib/utils/errors.ts` for current API
 - [ ] School-scoped queries (school_id filtering) for multi-tenant data
 - [ ] Loading and error states for UI components
 
@@ -132,8 +138,8 @@ If the user says "whatever you think is best", provide your recommendation and g
 **Actions**:
 1. Launch 3 code-reviewer agents in parallel with these specific focuses:
    - **Simplicity & DRY**: Code quality, duplication, unnecessary complexity, readability
-   - **Security & Authorization**: Auth guards present on all actions/routes, multi-tenant isolation, input validation, no data leaks across schools
-   - **Project Conventions**: i18n usage (no hardcoded strings), Zod validation on inputs, error handling patterns (createErrorResponse/createSuccessResponse), DaisyUI component usage, Drizzle ORM patterns
+   - **Security & Authorization**: Auth guards present on all actions/routes (read `lib/permissions/withAuth.ts`), multi-tenant isolation, input validation, no data leaks across schools
+   - **Project Conventions**: i18n usage (no hardcoded strings), Zod validation on inputs, error handling via response helpers (read `lib/utils/errors.ts`), DaisyUI component usage, Drizzle ORM patterns (validate using supabase subagent.)
 2. Consolidate findings and identify highest severity issues that you recommend fixing
 3. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
 4. Address issues based on user decision
