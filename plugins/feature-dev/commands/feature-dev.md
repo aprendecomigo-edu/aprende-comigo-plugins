@@ -71,15 +71,14 @@ Initial request: $ARGUMENTS
 
 ## Phase 3: Clarifying Questions
 
-**Goal**: Fill in gaps and resolve all ambiguities before designing
+**Goal**: Fill in gaps and resolve ambiguities if they exist.
 
 **CRITICAL**: This is one of the most important phases. DO NOT SKIP.
 
 **Actions**:
 1. Review the codebase findings and original feature request
 2. Identify underspecified aspects: edge cases, error handling, integration points, scope boundaries, design preferences, backward compatibility, performance needs
-3. **Present all questions to the user in a clear, organized list**
-4. **Wait for answers before proceeding to architecture design**
+3. Use the agents available to get more insights into ambiguity, related issues documentation or PRs.
 
 **Structured checklist** — consider each area and ask about any that are unclear:
 
@@ -90,8 +89,6 @@ Initial request: $ARGUMENTS
 - **Validation**: What are the input constraints? Which fields are required vs optional? What are valid ranges/formats?
 - **Error cases**: What happens on failure? What feedback does the user see? Are there retry scenarios?
 - **Testing**: What are the critical paths to test? Are there E2E flows that need Playwright coverage?
-
-If the user says "whatever you think is best", provide your recommendation and get explicit confirmation.
 
 ---
 
@@ -106,7 +103,7 @@ If the user says "whatever you think is best", provide your recommendation and g
 
 2. Review all approaches and form your opinion on which fits best for this specific task (consider: small fix vs large feature, urgency, complexity, team context)
 3. Present to user: brief summary of each approach, trade-offs comparison, **your recommendation with reasoning**, concrete implementation differences
-4. Ask 1 code-architect agents what they think and take that into consideration. At the end of the day, you are the expert and it is your decision.
+4. Ask 1 code-architect agents what they think and take that into consideration. At the end of the day, you are the expert in this codebase and it is your decision.
 
 ---
 
@@ -143,8 +140,7 @@ If the user says "whatever you think is best", provide your recommendation and g
    - **Security & Authorization**: Auth guards present on all actions/routes (read `lib/permissions/withAuth.ts`), multi-tenant isolation, input validation, no data leaks across schools
    - **Project Conventions**: i18n usage (no hardcoded strings), Zod validation on inputs, error handling via response helpers (read `lib/utils/errors.ts`), DaisyUI component usage, Drizzle ORM patterns (validate using supabase subagent.)
 2. Consolidate findings and identify highest severity issues that you recommend fixing
-3. **Present findings to user and ask what they want to do** (fix now, fix later, or proceed as-is)
-4. Address issues based on user decision
+3. Address issues before proceeding
 
 ---
 

@@ -6,7 +6,7 @@ allowed-tools: ["Bash", "Glob", "Grep", "Read", "Task"]
 
 # Comprehensive PR Review
 
-Run a comprehensive pull request review using multiple specialized agents, each focusing on a different aspect of code quality.
+You are a Typescript, Nextjs and React expert. Run a comprehensive pull request review using multiple specialized agents, each focusing on a different aspect of code quality.
 
 **Review Aspects (optional):** "$ARGUMENTS"
 
@@ -62,7 +62,7 @@ Run a comprehensive pull request review using multiple specialized agents, each 
    - **Suggestions** (nice to have)
    - **Positive Observations** (what's good)
 
-7. **Provide Action Plan**
+7. **Comment on PR with Action Plan**
 
    Organize findings:
    ```markdown
@@ -86,6 +86,7 @@ Run a comprehensive pull request review using multiple specialized agents, each 
    3. Consider suggestions
    4. Re-run review after fixes
    ```
+   If PR is not available, print this to the user.
 
 ## Usage Examples:
 
@@ -187,3 +188,5 @@ Run a comprehensive pull request review using multiple specialized agents, each 
 - Results are actionable with specific file:line references
 - Agents use appropriate models for their complexity
 - All agents available in `/agents` list
+- PR is the source of truth and has to be updated with comments when suggestions or action plans exist. 
+- PR is the source of truth and has to be updated with commits whenever changes exist.
