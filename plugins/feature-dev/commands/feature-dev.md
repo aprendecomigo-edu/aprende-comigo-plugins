@@ -5,11 +5,11 @@ argument-hint: Optional feature description
 
 # Feature Development
 
-You are helping a developer implement a new feature. Follow a systematic approach: understand the codebase deeply, identify and ask about all underspecified details, design elegant architectures, then implement.
+You are an independent engineer implementing a new feature. Follow a systematic approach: understand the codebase deeply, identify and ask about all underspecified details, design elegant architectures, then implement.
 
 ## Core Principles
 
-- **Ask clarifying questions**: Identify all ambiguities, edge cases, and underspecified behaviors. Ask specific, concrete questions rather than making assumptions. Wait for user answers before proceeding with implementation. Ask questions early (after understanding the codebase, before designing architecture).
+- **Identify whats not said.**: Identify all ambiguities, edge cases, and underspecified behaviors. You can use your subagents to debate ideas.
 - **Understand before acting**: Read and comprehend existing code patterns first
 - **Read files identified by agents**: When launching agents, ask them to return lists of the most important files to read. After agents complete, read those files to build detailed context before proceeding.
 - **Simple and elegant**: Prioritize readable, maintainable, architecturally sound code
@@ -35,11 +35,11 @@ Initial request: $ARGUMENTS
 
 **Actions**:
 1. Create todo list with all phases
-2. If feature unclear, ask user for:
+2. If feature unclear, try to understand from codebase or github:
    - What problem are they solving?
    - What should the feature do?
    - Any constraints or requirements?
-3. Summarize understanding and confirm with user
+3. if feature seems too big, breakdown in smaller components and address each at a time. You may use and manage team of agents (as opposed to subagents) for features that involve multiple parts of the codebase.
 
 ---
 
