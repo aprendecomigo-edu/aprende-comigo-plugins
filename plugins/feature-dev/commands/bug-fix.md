@@ -52,12 +52,12 @@ Initial request: $ARGUMENTS
 **Goal**: Find the code responsible for the bug
 
 **Actions**:
-1. Launch 2-3 `code-explorer` agents in parallel, each targeting a different diagnostic angle:
+1. Launch 2-3 `code-explorer` subagents in parallel, each targeting a different diagnostic angle:
    - "Trace the code path for [affected feature/area], focusing on where [symptom] could originate. Return the 5-10 most suspect files."
    - "Search for error messages, keywords, or patterns matching '[error text / symptom description]'. Check git history for recent changes to related files. Return the 5-10 most relevant files."
    - "Analyze the [specific subsystem — e.g., auth flow, data layer, API route] that handles [affected functionality]. Return the 5-10 most relevant files."
 
-2. Read all suspect files returned by agents to build detailed understanding
+2. Read all suspect files returned by subagents to build detailed understanding
 3. Run `git log --oneline -20 -- <suspect-files>` to check recent changes
 4. Run `git blame` on the most suspect sections to identify when the bug was likely introduced
 5. Produce a localization report:
@@ -133,13 +133,13 @@ If confidence is Low, state what additional information would be needed and proc
 **Goal**: Review the fix and present results
 
 **Actions**:
-1. Launch 2 `code-reviewer` agents in parallel:
+1. Launch 2 `code-reviewer` subagents in parallel:
    - **Correctness review**: "Review this bug fix for correctness. Verify the root cause analysis is sound, the fix addresses the actual problem, and no new bugs are introduced. Check edge cases."
    - **Security & conventions review**: "Review this bug fix for security issues and project convention adherence. Check auth guards, multi-tenant isolation, input validation, i18n usage, error handling patterns, and Drizzle ORM conventions."
 
 2. Process review findings:
    - **Critical issues** (confidence >= 80%): Fix them immediately without asking
-   - **Non-critical suggestions**: ask the code architect agent for opinion and then act on it.
+   - **Non-critical suggestions**: ask the code architect subagent for opinion and then act on it.
 
 3. If critical issues were fixed, re-run related tests to confirm nothing broke
 
