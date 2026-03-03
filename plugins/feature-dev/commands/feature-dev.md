@@ -22,7 +22,7 @@ You are helping a developer implement a new feature. Follow a systematic approac
 Read `CLAUDE.md` (or equivalent project instructions) to understand the project's conventions, architecture, and established patterns. This is the source of truth for how features should be built.
 **Git** 
 1. Create new feat branch inside a new worktree.
-2. Move feat issue in AP project to progress.
+2. Move feat issue in AP project to in progress.
 
 
 ---

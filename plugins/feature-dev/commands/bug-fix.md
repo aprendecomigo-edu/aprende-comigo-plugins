@@ -21,6 +21,8 @@ You are autonomously diagnosing and fixing a bug. Work through all phases withou
 
 Read `CLAUDE.md` (or equivalent project instructions) to understand the project's conventions, architecture, and established patterns. This is the source of truth for how fixes should be applied.
 
+**Git** 
+1. Create new fix branch inside a new worktree.
 ---
 
 ## Phase 1: Bug Understanding
@@ -136,11 +138,14 @@ If confidence is Low, state what additional information would be needed and proc
 
 2. Process review findings:
    - **Critical issues** (confidence >= 80%): Fix them immediately without asking
-   - **Non-critical suggestions**: Note them in the summary for future consideration
+   - **Non-critical suggestions**: ask the code architect agent for opinion and then act on it.
 
 3. If critical issues were fixed, re-run related tests to confirm nothing broke
 
-4. Present final summary:
+
+## Phase 7: Summary and Cleanup
+**Goal**: Document what was accomplished and issue PR
+
    - **Bug**: One-line description of what was wrong
    - **Root cause**: What caused it and why
    - **Fix**: What was changed and how
@@ -149,4 +154,8 @@ If confidence is Low, state what additional information would be needed and proc
    - **Risk assessment**: Low / Medium / High — potential for regressions
    - **Follow-ups**: Any non-critical improvements or related issues noticed
 
----
+ **Git** 
+   - Commit and push changes
+   - Open PR with appropriate description of work done and summary above.
+   - Comment on bug issue with work done.
+   - Delete worktree.
