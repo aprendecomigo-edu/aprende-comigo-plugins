@@ -1,6 +1,6 @@
 # Feature Development Plugin
 
-Feature development and bug-fixing workflows with specialized agents for codebase exploration, architecture design, and quality review. Optimized for Next.js + Supabase projects with awareness of authorization, multi-tenancy, internationalization, and validation patterns.
+Feature development and bug-fixing workflows with specialized agents for codebase exploration, architecture design, and quality review. Optimized for Next.js + Neon Serverless Postgres projects with awareness of authorization, multi-tenancy, internationalization, and validation patterns.
 
 ## Overview
 
@@ -122,7 +122,7 @@ The command will guide you through the entire process interactively.
 
 **Purpose**: Designs feature architectures with comprehensive implementation blueprints.
 
-**Architecture checklist**: Covers data layer (`lib/db/schema/` + `supabase/migrations/` + `lib/schemas/`), authorization (`lib/permissions/`), server actions, service layer (`lib/services/`), UI (DaisyUI + i18n + notifications), testing, and observability.
+**Architecture checklist**: Covers data layer (`lib/db/schema/` + `drizzle/migrations/` + `lib/schemas/`), authorization (`lib/permissions/`), server actions, service layer (`lib/services/`), UI (DaisyUI + i18n + notifications), testing, and observability.
 
 **When triggered**: Automatically in Phase 4, or manually for architecture design.
 

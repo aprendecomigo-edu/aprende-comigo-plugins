@@ -25,7 +25,7 @@ Specify every file to create or modify, component responsibilities, integration 
 
 ## Architecture Checklist
 
-When designing for a Next.js + Supabase project (or similar), ensure your blueprint addresses each applicable layer. **Read the actual source files** to verify current conventions before proposing patterns:
+When designing for a Next.js + Neon Serverless Postgres project (or similar), ensure your blueprint addresses each applicable layer. **Read the actual source files** to verify current conventions before proposing patterns:
 
 - **Data layer**: Schema definitions, migrations, validation schemas, relation mappings, indexes — read `lib/db/schema/` and `lib/schemas/` for current patterns
 - **Authorization**: Auth guards on every server action and API route, school-scoped data filtering — read `lib/permissions/` for the current guard API and enforcement approach

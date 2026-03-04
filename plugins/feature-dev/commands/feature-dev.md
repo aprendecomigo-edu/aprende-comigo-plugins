@@ -61,7 +61,7 @@ Initial request: $ARGUMENTS
    - "Analyze the current implementation of [existing feature/area], tracing through the code comprehensively"
    - "Identify UI patterns, testing approaches, or extension points relevant to [feature]"
 
-   **Project-specific exploration prompts** (use when working on a Next.js + Supabase project):
+   **Project-specific exploration prompts** (use when working on a Next.js + Neon Serverless Postgres project):
    - "Trace the authorization patterns — read `lib/permissions/withAuth.ts` and `lib/permissions/context.ts`, how are routes and server actions protected?"
    - "Map the data models related to [feature] — read `lib/db/schema/` for Drizzle schemas and `lib/schemas/` for Zod validation schemas"
    - "Analyze how similar CRUD features handle the full stack: page → server action → service → schema → i18n → error handling. Start from an existing page in `app/`"
@@ -140,7 +140,7 @@ Initial request: $ARGUMENTS
 1. Launch 3 code-reviewer agents in parallel with these specific focuses:
    - **Simplicity & DRY**: Code quality, duplication, unnecessary complexity, readability
    - **Security & Authorization**: Auth guards present on all actions/routes (read `lib/permissions/withAuth.ts`), multi-tenant isolation, input validation, no data leaks across schools
-   - **Project Conventions**: i18n usage (no hardcoded strings), Zod validation on inputs, error handling via response helpers (read `lib/utils/errors.ts`), DaisyUI component usage, Drizzle ORM patterns (validate using supabase subagent.)
+   - **Project Conventions**: i18n usage (no hardcoded strings), Zod validation on inputs, error handling via response helpers (read `lib/utils/errors.ts`), DaisyUI component usage, Drizzle ORM patterns
 2. Consolidate findings and identify highest severity issues that you recommend fixing
 3. Address issues before proceeding
 

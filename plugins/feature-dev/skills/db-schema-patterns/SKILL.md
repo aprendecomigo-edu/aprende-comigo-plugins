@@ -1,6 +1,6 @@
 # Database Schema Patterns
 
-Third-person description: Guides the developer through creating Drizzle ORM schemas, multi-tenant table design, migration files, relations, and indexes for a Next.js + Supabase project. Activates when the developer needs to "add a database table", "create a schema", "add a migration", "define a new model", or "modify the database".
+Third-person description: Guides the developer through creating Drizzle ORM schemas, multi-tenant table design, migration files, relations, and indexes for a Next.js + Neon Serverless Postgres project. Activates when the developer needs to "add a database table", "create a schema", "add a migration", "define a new model", or "modify the database".
 
 ---
 
@@ -8,7 +8,7 @@ Third-person description: Guides the developer through creating Drizzle ORM sche
 - `lib/db/schema/` — existing table definitions (the source of truth for DDL)
 - `lib/schemas/` — existing Zod validation schemas
 - `drizzle.config.ts` — migration configuration
-- `supabase/migrations/` — existing migration files to understand the two-file structure
+- `drizzle/migrations/` — existing migration files for naming and structure
 
 ## Drizzle Schema Design
 
@@ -48,9 +48,9 @@ Read existing tables in `lib/db/schema/` to confirm these conventions:
 
 When working with student data, account for three account types:
 
-- **STUDENT_WITH_ACCOUNT** — has auth.users account + has guardian(s)
-- **ADULT_STUDENT** — has auth.users account + no guardians (self-managed, 18+)
-- **STUDENT_NO_ACCOUNT** — no auth.users account (user_id IS NULL) + has guardian(s)
+- **STUDENT_WITH_ACCOUNT** — has Better Auth account (ba_user) + has guardian(s)
+- **ADULT_STUDENT** — has Better Auth account + no guardians (self-managed, 18+)
+- **STUDENT_NO_ACCOUNT** — no auth account (user_id IS NULL) + has guardian(s)
 
 These types affect permissions, data visibility, and query patterns. Read `lib/db/schema/` for the students table definition and the database trigger enforcing adult student rules.
 
@@ -62,14 +62,14 @@ Define relations separately from tables using `relations()`:
 - Many-to-many: use a junction table with two `one` relations
 - Relations enable type-safe eager loading with `db.query.*.findMany({ with: { ... } })`
 
-## Two-File Migration Structure
+## Migration Structure
 
-The project uses a specific two-file migration structure in `supabase/migrations/`:
+Migrations live in `drizzle/migrations/` and come in two types:
 
 1. **Drizzle-generated DDL** — tables, enums, indexes, foreign keys (auto-generated from `lib/db/schema/`)
-2. **Hand-written custom SQL** — PostgreSQL functions, triggers, storage buckets, RLS policies that Drizzle cannot generate
+2. **Hand-written custom SQL** — PostgreSQL functions, triggers (created via `npm run db:generate -- --custom`)
 
-Read `supabase/migrations/` to see the actual file naming and structure. Use `npm run db:generate` for DDL changes, and `npm run db:generate -- --custom` for hand-written SQL.
+Read `drizzle/migrations/` for naming conventions. Drizzle tracks applied migrations in `drizzle.__drizzle_migrations`.
 
 ## References
 

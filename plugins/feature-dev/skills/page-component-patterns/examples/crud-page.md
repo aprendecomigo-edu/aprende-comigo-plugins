@@ -26,7 +26,7 @@ This example shows the **structural pattern** for CRUD pages. Do not copy verbat
 //    Use getTranslations("namespace") from next-intl/server
 //    -> Read messages/en.json for the namespace and key conventions
 
-// 3. FETCH DATA — query via Drizzle (never via Supabase client)
+// 3. FETCH DATA — query via Drizzle ORM
 //    Always filter by schoolId for multi-tenant isolation
 //    -> Read lib/services/ for existing service query functions
 

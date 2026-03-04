@@ -40,7 +40,7 @@ Rate each potential issue on a scale from 0-100:
 
 ## Project-Specific Review Criteria
 
-When reviewing a Next.js + Supabase codebase (or similar), apply these baseline confidence scores and adjust based on context:
+When reviewing a Next.js + Neon Serverless Postgres codebase (or similar), apply these baseline confidence scores and adjust based on context:
 
 | Issue | Baseline Confidence | Why |
 |---|---|---|
