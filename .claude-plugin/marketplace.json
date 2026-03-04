@@ -683,6 +683,16 @@
         "url": "https://github.com/semgrep/mcp-marketplace.git"
       },
       "homepage": "https://github.com/semgrep/mcp-marketplace"
+    },
+    {
+      "name": "neon",
+      "description": "Neon Serverless Postgres integration with MCP tools, platform guidance skill, and a specialized Drizzle ORM + Neon database workflow agent for schema design, migrations, connections, and queries.",
+      "author": {
+        "name": "Aprende Comigo"
+      },
+      "source": "./plugins/neon",
+      "category": "database",
+      "homepage": "https://github.com/aprendecomigo-edu/aprende-comigo-plugins/tree/main/plugins/neon"
     }
   ]
 }
