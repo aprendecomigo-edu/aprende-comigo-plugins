@@ -37,14 +37,14 @@
       "homepage": "https://github.com/aprendecomigo-edu/aprende-comigo-plugins/tree/main/custom/pr-review-toolkit"
     },
     {
-      "name": "github",
-      "description": "Official GitHub MCP server for repository management with Aprende Comigo project board workflow support. Create issues, manage pull requests, review code, search repositories, and manage the development kanban board (Backlog, In Progress, In Review, Done) with automated transitions.",
+      "name": "git",
+      "description": "Git workflows, worktree management, and GitHub project board integration with MCP server, git-expert agent (Haiku), and project-manager agent (Sonnet)",
       "author": {
         "name": "Aprende Comigo"
       },
-      "source": "./custom/github",
-      "category": "productivity",
-      "homepage": "https://github.com/aprendecomigo-edu/aprende-comigo-plugins/tree/main/custom/github"
+      "source": "./custom/git",
+      "category": "development",
+      "homepage": "https://github.com/aprendecomigo-edu/aprende-comigo-plugins/tree/main/custom/git"
     }
   ]
 }
