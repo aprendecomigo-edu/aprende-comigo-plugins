@@ -38,7 +38,7 @@
     },
     {
       "name": "git",
-      "description": "Git workflows, worktree management, and GitHub project board integration with MCP server, git-expert agent (Haiku), and project-manager agent (Sonnet)",
+      "description": "Git workflows, worktree management, and GitHub project board integration with git-expert agent (Haiku), project-manager agent (Sonnet), and skills for worktrees, gh CLI, and PR creation",
       "author": {
         "name": "Aprende Comigo"
       },

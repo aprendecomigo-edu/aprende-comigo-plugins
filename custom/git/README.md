@@ -6,14 +6,9 @@ Git workflows, worktree management, and GitHub project board integration for Cla
 
 - **Git Expert Agent** (Haiku): Worktree setup, branch management, and general git operations
 - **Project Manager Agent** (Sonnet): GitHub Projects board transitions and status queries
-- **GitHub MCP Server**: Full GitHub API access for issues, PRs, code review, and repository management
 - **Project Board Workflow**: Defined transitions for the Aprende Comigo development lifecycle (Backlog -> In Progress -> In Review -> Done)
 
 ## Prerequisites
-
-### GitHub MCP Server
-
-Set the `GITHUB_PERSONAL_ACCESS_TOKEN` environment variable with a token that has `repo` scope.
 
 ### Project Board Operations
 
@@ -35,10 +30,6 @@ claude plugin add --source ./custom/git
 ```
 
 ## Components
-
-### MCP Server
-
-Configured in `.mcp.json` -- connects to the official GitHub MCP server via HTTP for standard repository operations.
 
 ### Agent: `git-expert`
 
