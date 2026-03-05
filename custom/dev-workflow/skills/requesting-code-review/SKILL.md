@@ -1,6 +1,6 @@
 ---
-name: requesting-code-review
-description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements
+description: >
+  This skill should be used when the user asks to review code, do a code review, check the code, review recent changes, or verify work before a PR. Trigger phrases: "review my code", "do a code review", "review this", "check my changes", "review the implementation", "can you review", "review before PR", "review recent changes", "review the diff", "review current diff", "review unstaged changes", "check this diff".
 ---
 
 # Requesting Code Review

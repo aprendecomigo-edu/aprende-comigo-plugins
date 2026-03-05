@@ -1,12 +1,6 @@
 ---
-name: better-auth-organization
 description: >
-  Provides Better Auth organization plugin knowledge covering multi-tenant org creation, member management,
-  invitation flows, team configuration, dynamic RBAC with custom roles, and lifecycle hooks.
-  Triggers when working with organization-level features, role-based access control via Better Auth,
-  team management, or member invitations. Note: this project currently uses custom multi-tenancy
-  (school_roles, students, teachers, guardians tables) — consult this skill when considering
-  migration to Better Auth's organization plugin.
+  This skill should be used when working with Better Auth organization or multi-tenancy features: org creation, member management, invitations, team roles, or RBAC. Trigger phrases: "better auth organization", "org plugin", "multi-tenant auth", "member invitation", "team roles", "RBAC", "role-based access", "organization members". Note: this project currently uses custom multi-tenancy (school_roles, students, teachers, guardians tables) — also load this skill when considering or comparing against Better Auth's organization plugin.
 ---
 
 # Organization Best Practices with Better Auth

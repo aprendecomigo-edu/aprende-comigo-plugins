@@ -1,11 +1,6 @@
 ---
-name: better-auth-practices
 description: >
-  Provides Better Auth integration knowledge covering setup workflow, database adapters, session management,
-  email flows, security settings, hooks API, plugin list, client methods, and common gotchas.
-  Triggers when installing or configuring Better Auth, setting BETTER_AUTH_SECRET or BETTER_AUTH_URL,
-  creating or modifying lib/auth.ts or lib/auth-client.ts, adding auth plugins, troubleshooting sessions,
-  or implementing authentication flows such as magic links, OTP, or social providers.
+  This skill should be used when working with Better Auth in any capacity: configuring the auth server, editing auth client code, implementing or modifying authentication UI, or troubleshooting auth flows. Trigger phrases: "better auth", "auth setup", "sign up", "sign in", "signup", "signin", "login", "logout", "magic link", "OTP", "session", "auth plugin", "social provider", "OAuth". Also triggers when editing files in auth-related paths: lib/auth.ts, lib/auth-client.ts, app/(auth)/, components/auth/, sign-up page, sign-in page, forgot-password, verify-email, or any authentication flow component.
 ---
 
 # Better Auth Integration Guide

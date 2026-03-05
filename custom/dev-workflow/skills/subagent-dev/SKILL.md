@@ -1,5 +1,6 @@
 ---
-description: This skill should be used when the user asks to implement a feature, build functionality, fix a bug, work on a task, or develop something new. Trigger phrases: "implement this feature", "build the...", "fix this bug", "work on this task", "develop a...", "add support for...", "create a...", "I need you to implement".
+description: >
+  This skill should be used when the user asks to implement a feature, build functionality, fix a bug, work on a task, or develop something new. Trigger phrases: "implement this feature", "build the...", "fix this bug", "work on this task", "develop a...", "add support for...", "create a...", "I need you to implement".
 ---
 
 # Subagent-Driven Development

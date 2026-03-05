@@ -1,7 +1,9 @@
 ---
 description: >
-  A code quality reviewer that runs after spec compliance is confirmed. Evaluates code cleanliness, test coverage, maintainability, security basics, and adherence to project conventions — returning categorised issues as Critical, Important, or Minor.
-  <example>Run a quality review on branch feat/teacher-availability — spec compliance has already been verified, focus on code quality, test coverage, and maintainability</example>
+  A code quality reviewer that evaluates code cleanliness, test coverage, maintainability, security basics, and adherence to project conventions — returning categorised issues as Critical, Important, or Minor. Use for standalone code reviews or as part of the subagent-dev workflow after spec compliance is confirmed.
+  <example>Review my recent changes for code quality issues</example>
+  <example>Do a code review on the work I just did on the scheduling feature</example>
+  <example>Run a quality review on branch feat/teacher-availability — focus on code quality, test coverage, and maintainability</example>
   <example>Quality review commit abc1234 — check for dead code, missing test coverage on critical paths, and any security concerns</example>
 model: claude-sonnet-4-6
 color: red

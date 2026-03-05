@@ -1,5 +1,4 @@
 ---
-name: drizzle-orm
 description: >
   Type-safe SQL toolkit for TypeScript. Covers schema declaration with pgTable, column types, enums, indexes and constraints, relational queries, migrations with drizzle-kit (generate, migrate, push, pull, custom migrations), Neon database drivers (HTTP, WebSocket, postgres.js, node-postgres), Zod schema generation, and query patterns. Use for any Drizzle ORM questions including schema design, query building, migration workflows, and configuration.
 ---

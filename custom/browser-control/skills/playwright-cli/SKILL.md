@@ -1,5 +1,4 @@
 ---
-name: playwright-cli
 description: >
   Provides playwright-cli knowledge for browser automation tasks including navigation, form filling,
   screenshots, web scraping, session management, network request mocking, and Playwright test generation.
