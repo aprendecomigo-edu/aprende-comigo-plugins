@@ -2,16 +2,16 @@
 
 Bespoke Claude Code plugins for the [Aprende Comigo](https://github.com/aprendecomigo-edu) educational platform.
 
-For upstream plugins maintained by Anthropic, install directly from [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official).
 
 ## Plugins
 
 | Plugin | Description |
 |--------|-------------|
-| [feature-dev](custom/feature-dev/) | Feature development and bug-fixing workflows with specialized agents for codebase exploration, architecture design, and quality review |
+| [dev-workflow](custom/dev-workflow/) | Lightweight subagent-driven feature development and bug fixing workflow: implement, spec review, and quality review via sequential fresh subagents |
 | [neon](custom/neon/) | Neon Serverless Postgres integration with MCP tools, Drizzle ORM skill, and a database workflow agent |
 | [pr-review-toolkit](custom/pr-review-toolkit/) | PR review agents for comments, tests, error handling, type design, and code quality |
-| [github](custom/github/) | GitHub MCP server with Aprende Comigo project board workflow (Backlog, In Progress, In Review, Done) |
+| [git](custom/git/) | Git workflows, worktree management, and GitHub project board integration with MCP server and specialised agents |
+| [browser-control](custom/browser-control/) | Browser automation via Anthropic's playwright-cli: navigate pages, fill forms, take screenshots, mock network requests, manage sessions, and generate Playwright tests |
 
 ## Installation
 
@@ -27,10 +27,11 @@ Or browse in `/plugin > Discover`.
 
 ```
 custom/                          # All bespoke plugins
-  feature-dev/                   # Feature dev & bug-fix workflows
+  dev-workflow/                  # Subagent-driven feature dev & bug-fix workflow
   neon/                          # Neon Postgres + Drizzle ORM
   pr-review-toolkit/             # PR review agents
-  github/                        # GitHub MCP + project board
+  git/                           # Git workflows + GitHub MCP
+  browser-control/               # Browser automation via playwright-cli
 .claude-plugin/marketplace.json  # Marketplace manifest
 ```
 

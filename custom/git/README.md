@@ -62,6 +62,10 @@ Isolated git worktree creation with smart directory selection and automatic proj
 
 Comprehensive GitHub CLI (gh) reference covering repositories, issues, PRs, Actions, projects, releases, gists, codespaces, organizations, and extensions.
 
+### Skill: `create-pr`
+
+Push the current feature branch and open a pull request against `staging`. Generates a title and description from commits and any provided spec context, then returns the PR URL.
+
 ### Skill: `ac-project-workflow`
 
 Aprende Comigo project board workflow rules, team roles, and transition logic.

@@ -75,7 +75,7 @@ Leverage Neon branching for database workflows:
 
 - **Always read existing schemas first** before suggesting new ones
 - **Use Neon MCP tools** for direct database operations (don't suggest manual psql commands)
-- **Test migrations on branches** before applying to main — never apply untested migrations
+- **Test migrations on branches** before applying to staging — never apply untested migrations
 - **Confirm with user** before any destructive operations (drops, truncates, data migrations)
 - **Match project conventions** for naming, types, relations, and multi-tenancy patterns
 - **Generate type-safe code** — prefer Drizzle's query builder over raw SQL

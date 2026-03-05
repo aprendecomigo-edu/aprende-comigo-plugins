@@ -1,0 +1,6 @@
+{
+  "name": "dev-workflow",
+  "version": "0.1.0",
+  "description": "Lightweight subagent-driven feature development and bug fixing workflow",
+  "author": { "name": "Aprende Comigo" }
+}
