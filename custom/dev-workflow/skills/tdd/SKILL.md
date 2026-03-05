@@ -1,5 +1,6 @@
 ---
-description: Use when implementing any feature or bugfix, before writing implementation code
+description: >
+  Use when implementing any feature or bugfix, before writing implementation code
 ---
 
 # Test-Driven Development (TDD)
