@@ -9,6 +9,7 @@ The `ui-ux` plugin provides skills for reviewing UI code against established web
 ## Features
 
 - **web-design-guidelines**: Audits UI code against 100+ rules from the Vercel Web Interface Guidelines, outputting findings in `file:line` format.
+- **aprende-design-system**: Map and rules for the aprende comigo. brand and design system — points directly to the live source files (tokens.css, kit.css, design-guidelines HTML, React components) rather than duplicating content. Includes architectural rules not derivable from reading code.
 
 ## Installation
 
